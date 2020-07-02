@@ -2,30 +2,31 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+//ì½”ë“œ ì°¸ê³  => https://www.popit.kr/java-%EC%BD%94%EB%93%9C%EB%A1%9C-%EC%9D%B4%ED%95%B4%ED%95%98%EB%8A%94-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8blockchain/
 
 public class BlockchainDriver {
 	List<Block> blockchain = new ArrayList<Block>();
 	public static void main(String[] args) throws NoSuchAlgorithmException {		
 		Scanner scanner = new Scanner(System.in);	
-		System.out.println("ºí·ÏÃ¼ÀÎ ±â¹İ È¸¿ø°¡ÀÔÀ» ½ÃÀÛÇÕ´Ï´Ù.");
+		System.out.println("ë¸”ë¡ì²´ì¸ ê¸°ë°˜ íšŒì›ê°€ì…ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
 		
-		System.out.print("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
+		System.out.print("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš” : ");
 		String name = scanner.nextLine();
 		String[] idTransactions = {name};
 		Block idBlock = new Block(new BlockHeader(null, idTransactions), idTransactions);
 		
-		System.out.print("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
+		System.out.print("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš” : ");
 		String password = scanner.nextLine();
 		String[] passwordTransactions = {password};
 		Block passwordBlock = new Block(new BlockHeader(idBlock.getBlockHash().getBytes(), passwordTransactions), passwordTransactions);
 		
-		System.out.print("Ãë¹Ì¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
+		System.out.print("ì·¨ë¯¸ë¥¼ ì…ë ¥í•˜ì„¸ìš” : ");
 		String hobby = scanner.nextLine();
 		String[] hobbyTrasactions = {hobby};
 		Block hobbyBlock = new Block (new BlockHeader(passwordBlock.getBlockHash().getBytes(), hobbyTrasactions), hobbyTrasactions);
 		
-		System.out.println("»ı¼ºµÈ ¾ÆÀÌµğ Hash°ª : " + idBlock.getBlockHash());
-		System.out.println("»ı¼ºµÈ ºñ¹Ğ¹øÈ£ Hash°ª : " + passwordBlock.getBlockHash());
-		System.out.println("»ı¼ºµÈ Ãë¹Ì Hash°ª : " + hobbyBlock.getBlockHash());
+		System.out.println("ìƒì„±ëœ ì•„ì´ë”” Hashê°’ : " + idBlock.getBlockHash());
+		System.out.println("ìƒì„±ëœ ë¹„ë°€ë²ˆí˜¸ Hashê°’ : " + passwordBlock.getBlockHash());
+		System.out.println("ìƒì„±ëœ ì·¨ë¯¸ Hashê°’ : " + hobbyBlock.getBlockHash());
 	}
 }
